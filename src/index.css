@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-black-light: #111111;
+  --color-black-muted: #1a1a1a;
+  --color-red: #dc2626;
+  --color-red-dark: #991b1b;
+  --color-red-light: #ef4444;
+  --color-maroon: #7f1d1d;
+  --color-maroon-dark: #450a0a;
+  --color-neon-red: #ff1a1a;
+  --color-white: #fafafa;
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black font-sans text-white antialiased;
+  }
+
+  ::selection {
+    @apply bg-red/40 text-white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-red via-red-light to-red bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-28;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .neon-ring {
+    box-shadow:
+      0 0 30px rgba(220, 38, 38, 0.4),
+      0 0 60px rgba(127, 29, 29, 0.25),
+      inset 0 0 24px rgba(220, 38, 38, 0.1);
+  }
+
+  .neon-diamond {
+    box-shadow:
+      0 0 30px rgba(239, 68, 68, 0.32),
+      0 0 45px rgba(153, 27, 27, 0.2);
+  }
+
+  .neon-line {
+    box-shadow:
+      0 0 16px rgba(220, 38, 38, 0.5),
+      0 0 30px rgba(255, 26, 26, 0.28);
+  }
+
+  .neon-hex {
+    background: rgba(127, 29, 29, 0.06);
+    border: 2px solid rgba(220, 38, 38, 0.42);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow:
+      0 0 28px rgba(220, 38, 38, 0.35),
+      inset 0 0 16px rgba(127, 29, 29, 0.14);
+    animation: neon-float 10s ease-in-out infinite;
+  }
+}
+
+@keyframes neon-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(6deg);
+  }
+}
